@@ -51,10 +51,11 @@
     <label>Tags</label>
     @foreach ($tags as $tag)
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" name="tags[]" id="{{$tag->slug}}"
-        value="{{$tag->id}}">
-        {{in_array($tag->, ol('tags',[])) ? "checked" : ""}}
-        <label class="form-check-label" for="{{$tag->slug}}">
+        <input class="form-check-input" type="checkbox" name="tags[]" id="{{$tag->id}}"
+        value="{{$tag->id}}"
+        {{old("tags") && in_array($tag->id, old('tags')) ? "checked" : ""}}
+        >
+        <label class="form-check-label" for="{{$tag->id}}">
           {{$tag->name}}
         </label>  
       </div>
