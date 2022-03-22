@@ -26,7 +26,8 @@
     <select class="form-control" name="category_id" id="category_id">
       <option value="">Default select</option>
       @foreach($categories as $category)
-      <option value="{{$category->id}}">
+      <option value="{{$category->id}}"
+      >
         {{ $category->name }}
       </option>
       @endforeach
@@ -38,17 +39,23 @@
 
   <!-- tags -->
   <div class="from-group">
-    <label for="">Tags</label>
+    <label>Tags</label>
     @foreach ($tags as $tag)
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="{{$tag->slug}}"
-      name="tags[]" value="{{$tag->id}}"
-      {{ $post->tags->contains($tag) ? "checked" : ""}}>
-      <label class="form-check-label" for="{{$tag->slug}}">
-        {{$tag->name}}
-      </label>  
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="{{$tag->slug}}"
+        name="tags[]" value="{{$tag->id}}"
+        @if($errors->any())       
+          {{ in_array($tag->id, old('tags', [])) ? "checked" : ""}}
+        @else
+          {{ $post->tags->contains($tag) ? "checked" : ""}}
+        @endif
+        >
 
-    </div>
+        <label class="form-check-label" for="{{$tag->slug}}">
+          {{$tag->name}}
+        </label>  
+
+      </div>
     @endforeach
 
   </div>

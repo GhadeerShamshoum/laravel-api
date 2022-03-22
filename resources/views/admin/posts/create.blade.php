@@ -53,6 +53,7 @@
       <div class="form-check">
         <input class="form-check-input" type="checkbox" name="tags[]" id="{{$tag->slug}}"
         value="{{$tag->id}}">
+        {{in_array($tag->, ol('tags',[])) ? "checked" : ""}}
         <label class="form-check-label" for="{{$tag->slug}}">
           {{$tag->name}}
         </label>  
