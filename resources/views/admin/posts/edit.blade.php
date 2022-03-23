@@ -26,11 +26,19 @@
     <select class="form-control" name="category_id" id="category_id">
       <option value="">Default select</option>
       @foreach($categories as $category)
-      <option value="{{$category-> id}}">
-        {{$category->name}} 
-         {{old('category_id') == $category ? "selected" : "" }}>
-        {{old("tags") && in_array($tag->id, old('tags')) ? "checked" : ""}} 
-      </option>
+      <option value="{{$category->id}}"
+      @if($errors->any())       
+       {{old('category_id') == $category->id ? "selected" : "" }}
+        @else
+          {{$post->category_id == $category->id ? "selected" : ""}} 
+        @endif
+        >{{$category->name}}
+          
+          
+          
+       
+      
+        
       @endforeach
     </select>
     @error('category_id')
