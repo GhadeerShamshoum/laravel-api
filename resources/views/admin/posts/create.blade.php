@@ -27,15 +27,14 @@
     <div class="invalid-feedback">{{ $message }}</div>
     @enderror
   </div>
- 
+
   <!-- Categories -->
   <div class="form-group">
     <label for="">Category</label>
-    <select class="form-control" name="category_id" id="category_id">
+    <select class="form-control  @error('category_id') is-invalid @enderror" name="category_id" id="category_id">
       <option value="">Default select</option>
       @foreach($categories as $category)
-        <option value="{{$category}}" {{old('category_id') == $category ? "selected" : "" }}> {{$category->name}}
-        
+      <option value="{{$category->id}}" {{old('category_id') == $category->id ? "selected" : "" }}> {{$category->name}}   
       </option>
       @endforeach
     </select>
