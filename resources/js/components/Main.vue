@@ -4,7 +4,7 @@
       <div v-for="(post, index) in posts" :key="index">
         <h1>{{post.title}}</h1>
         <h3>{{post.content}}</h3>
-        
+       
 
       </div>
     </div>
@@ -22,7 +22,7 @@ export default {
       return{
         posts: []
 
-      }
+      };
     },
     created() {
       axios
